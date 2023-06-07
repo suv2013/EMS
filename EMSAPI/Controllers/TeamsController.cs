@@ -12,7 +12,6 @@ namespace LeaveRequestApp.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [EnableCors]
     public class TeamsController : ControllerBase
     {
         private readonly LeaveAppDBContext _context;

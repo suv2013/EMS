@@ -12,20 +12,22 @@ namespace LeaveRequestApp.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [EnableCors("MyAllowSpecificOrigins")]
     public class UserRolesController : ControllerBase
     {
         private readonly LeaveAppDBContext _context;
+        private readonly ILogger<UserRolesController> _logger;
 
-        public UserRolesController(LeaveAppDBContext context)
+        public UserRolesController(LeaveAppDBContext context, ILogger<UserRolesController> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         // GET: api/UserRoles
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UserRole>>> GetUserRole()
         {
+            _logger.LogInformation("GetUserRole Started");
             var userRoles = await (from ur in _context.UserRole
                         join u in _context.User
                              on ur.UserId equals u.UserId

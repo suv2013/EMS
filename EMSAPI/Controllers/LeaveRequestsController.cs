@@ -12,7 +12,6 @@ namespace LeaveRequestApp.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [EnableCors]
     public class LeaveRequestsController : ControllerBase
     {
         private readonly LeaveAppDBContext _context;
